@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="72dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    >
 
     <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/celltext"
-        android:layout_width="0dp"
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-</LinearLayout>
+        android:textSize="16sp"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="8dp"
+        android:paddingLeft="16dp"
+        />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/text_descript"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:singleLine="true"
+        android:textColor="@color/text_secondary"
+        android:layout_below="@+id/text_title"
+        android:paddingTop="8dp"
+        android:paddingLeft="16dp"
+        />
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/text_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:singleLine="true"
+        android:textColor="@color/text_secondary"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        />
+    <!-- paddingRight: 72dp -->
+
+    <!--ImageView
+        android:id="@+id/action_edit"
+        android:src="@drawable/ic_action_edit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:paddingLeft="16dp"
+        android:layout_alignParentRight="true"
+        /-->
+</RelativeLayout>

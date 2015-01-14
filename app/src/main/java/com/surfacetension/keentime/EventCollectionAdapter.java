@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 /**
- * Created by simonkenny on 13/01/15.
+ * Created by simonkenny on 14/01/15.
  */
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
-    private ArrayList<EventData> mDataset;
+public class EventCollectionAdapter extends RecyclerView.Adapter<EventCollectionAdapter.ViewHolder> {
+    private String[] mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -28,17 +26,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public EventAdapter(ArrayList<EventData> myDataset) {
+    public EventCollectionAdapter(String[] myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public EventAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public EventCollectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_list_cell, parent, false);
+                .inflate(R.layout.event_collection_list_cell, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);
@@ -50,19 +48,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        EventData mEventData = mDataset.get(position);
-        ((TextView)holder.mView.findViewById(R.id.text_title)).setText(mEventData.getCustomer()+" - "
-                +mEventData.getProject()+" - "+mEventData.getTask());
-        ((TextView)holder.mView.findViewById(R.id.text_descript)).setText(mEventData.getStart().toString());
-        ((TextView)holder.mView.findViewById(R.id.text_duration)).setText(
-                String.format("%.1f mins",mEventData.calculateDurationSecs()) );
+        ((TextView)holder.mView.findViewById(R.id.text)).setText(mDataset[position]);
+        String selectedCollection = GlobalSettings.getInstance().getCurEventCollection();
+        boolean isSelected = false;
+        if( selectedCollection != null ) {
+            if (selectedCollection.equals(mDataset[position])) { //debug
+                ((ImageView) holder.mView.findViewById(R.id.icon)).setImageResource(R.drawable.ic_action_accept);
+                isSelected = true;
+            }
+        }
+        if( !isSelected ) {
+            ((ImageView) holder.mView.findViewById(R.id.icon)).setImageDrawable(null);
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataset.length;
     }
-
-
 }
