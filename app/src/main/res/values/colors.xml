@@ -3,4 +3,5 @@
     <color name="primary">#FF5722</color>
     <color name="primarydark">#E64A19</color>
     <color name="secondary">#40C4FF</color>
+    <color name="white">#FFFFFF</color>
 </resources>
