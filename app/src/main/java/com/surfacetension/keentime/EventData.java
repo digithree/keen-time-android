@@ -6,11 +6,15 @@ import java.util.Date;
  * Created by simonkenny on 14/01/15.
  */
 public class EventData {
+
+    private long id = -1;
     private String customer = "Customer";
     private String project = "Project";
     private String task = "Task";
     private Date start = new Date();
     private Date end = new Date();
+    private String user = "User";
+    private String collection = "Collection";
 
     // --- Constructors
     public EventData() {}
@@ -35,6 +39,14 @@ public class EventData {
     }
 
     // --- Getters and setters
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getCustomer() {
         return customer;
@@ -74,5 +86,21 @@ public class EventData {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 }

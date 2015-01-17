@@ -10,8 +10,13 @@ public class GlobalSettings {
 
     private static final String SHARED_PREFS_EMPTY_STRING = "[[empty]]";
 
-    private static final String SHARED_PREFS = "KEEN_TIME_SHARED_PREFS";
-    private static final String SHARED_PREFS_CUR_EVENT_COLLECTION = "CUR_EVENT_COLLECTION";
+    //private static final String SHARED_PREFS = "KEEN_TIME_SHARED_PREFS";
+    public static final String SHARED_PREFS_CUR_EVENT_COLLECTION = "CUR_EVENT_COLLECTION";
+    public static final String SHARED_PREFS_USER = "USER";
+    public static final String SHARED_PREFS_MASTER_API = "MASTER_API";
+    public static final String SHARED_PREFS_PROJECT = "PROJECT";
+    public static final String SHARED_PREFS_READ = "READ";
+    public static final String SHARED_PREFS_WRITE = "WRITE";
 
     SharedPreferences sharedPreferences;
 
@@ -30,14 +35,14 @@ public class GlobalSettings {
 
     // --- access
 
-    public void setCurEventCollection(String name) {
+    public void setStringKey(String key, String value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(SHARED_PREFS_CUR_EVENT_COLLECTION, name);
+        editor.putString(key, value);
         editor.commit();
     }
 
-    public String getCurEventCollection() {
-        String str = sharedPreferences.getString(SHARED_PREFS_CUR_EVENT_COLLECTION, SHARED_PREFS_EMPTY_STRING);
+    public String getStringKey(String key) {
+        String str = sharedPreferences.getString(key, SHARED_PREFS_EMPTY_STRING);
         if( str.equals(SHARED_PREFS_EMPTY_STRING) ) {
             return null;
         }

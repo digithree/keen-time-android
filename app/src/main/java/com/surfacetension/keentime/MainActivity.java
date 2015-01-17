@@ -233,7 +233,8 @@ public class MainActivity extends ActionBarActivity {
                     new RecyclerItemClickListener(mContext,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override public void onItemClick(View view, int position) {
-                                GlobalSettings.getInstance().setCurEventCollection(testDataset[position]);
+                                GlobalSettings.getInstance()
+                                        .setStringKey(GlobalSettings.SHARED_PREFS_CUR_EVENT_COLLECTION, testDataset[position]);
                                 mAdapter.notifyDataSetChanged();
                             }
                         })
